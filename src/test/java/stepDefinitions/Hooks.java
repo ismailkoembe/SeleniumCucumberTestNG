@@ -6,6 +6,7 @@ import Utilities.PropManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,7 +19,7 @@ import java.time.Duration;
 /**
  * @author Ismail Koembe
  */
-
+@Slf4j
 public class Hooks{
     public final String env = Environments.PRODUCTION.name();
     public final WebDriver driver = Driver.get(env);
@@ -40,11 +41,12 @@ public class Hooks{
     @After
     public void tearDownScenario(Scenario scenario){
         System.out.println("After Method");
-//        if (scenario.isFailed()){//capturing the screenshot when a sceraio fails and attaching it to the report
-//            final byte[] failedScreenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
-//            scenario.attach(failedScreenshot,"image/png","failed_scenario"+scenario.getName()+"");
-            Driver.closeDriver();
-
+        if (scenario.isFailed()) {
+            log.info("capturing the screenshot when a sceraio fails and attaching it to the report");
+            final byte[] failedScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(failedScreenshot, "image/png", "failed_scenario" + scenario.getName() + "");
+        }
+        Driver.closeDriver();
     }
     /**
      * This Before hooks ONLY RUNS for @smoke_test TAGGED SCENARIOS

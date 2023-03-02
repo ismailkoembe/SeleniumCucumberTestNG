@@ -15,10 +15,10 @@ Feature: Password_strength
     Examples:
       | password |
       | abcd     |
-#      | ABCD     |
-#      | 1234     |
-#      | @#€$     |
-#      | Ab1$     |
+      | ABCD     |
+      | 1234     |
+      | @#€$     |
+      | Ab1$     |
 
 #  Scenario Outline: TC002_User enters a 7 digit password with at least 1 uppercase
 #    Then User enters seven digit "<password>" with at least one uppercase
