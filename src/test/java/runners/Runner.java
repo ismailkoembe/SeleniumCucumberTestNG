@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports",
                 "rerun:target/rerun.txt"},
         features = "src/test/resources/features/",
+        monochrome=true,
         glue = "stepDefinitions",
         tags = "@all",
         dryRun = false

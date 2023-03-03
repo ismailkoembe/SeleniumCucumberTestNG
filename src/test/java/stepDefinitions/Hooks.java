@@ -34,13 +34,13 @@ public class Hooks{
      */
     @Before
     public void setUpScenario(){
-        System.out.println("Before Method");
+        log.info("Before Method");
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(4000));
         driver.manage().window().maximize();
     }
     @After
     public void tearDownScenario(Scenario scenario){
-        System.out.println("After Method");
+        log.info("After Method");
         if (scenario.isFailed()) {
             log.info("capturing the screenshot when a sceraio fails and attaching it to the report");
             final byte[] failedScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);

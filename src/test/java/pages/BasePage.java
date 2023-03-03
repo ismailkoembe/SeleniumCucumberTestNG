@@ -40,7 +40,9 @@ public abstract class BasePage extends Hooks {
     }
 
     public void sendKey(WebElement element, String input){
+        long start = System.currentTimeMillis();
         wait.until(ExpectedConditions.visibilityOf(element)).sendKeys(input);
+        log.info("Clicked in {}ms", System.currentTimeMillis() - start);
     }
 
     public boolean isDisplayed(WebElement element){
