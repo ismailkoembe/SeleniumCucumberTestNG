@@ -1,6 +1,7 @@
 build/
 lib/*.jar
 target
+.target
 .idea
 .idea_modules
 .settings
