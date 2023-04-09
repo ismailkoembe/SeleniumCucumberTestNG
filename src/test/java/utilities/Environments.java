@@ -1,4 +1,4 @@
-package Utilities;
+package utilities;
 
 /**
  * @author Ismail Koembe
